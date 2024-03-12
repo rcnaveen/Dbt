@@ -34,6 +34,8 @@ models:
         description: '{{ doc("gross_item_sales_amount") }}'
       - name: item_discount_amount
         description: item level discount amount. this is always less than or equal to zero
+        tests:
+          - generic_test
       - name: item_tax_amount
         description: item level tax total
       - name: net_item_sales_amount
