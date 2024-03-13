@@ -1,7 +1,9 @@
 version: 2
-
-models:
+models: # or seeds:
   - name: fct_orders
+    tests:
+      - dbt_expectations.expect_table_row_count_to_equal_other_table:
+          compare_model: ref("int_order_items")
     description: orders fact table
     columns:
       - name: order_key
