@@ -1,3 +1,6 @@
+{% macro we(src)%}
+{{one(src)}}
+{% endmacro %}
 {% macro one(src)%}
 {% set payment_methods=get_methods()%}
 

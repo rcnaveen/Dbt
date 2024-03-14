@@ -31,3 +31,17 @@ sources:
               - relationships:
                   to: source('tpch', 'orders')
                   field: o_orderkey
+models:
+  - name: stg_tpch_orders
+    description: For testing the model stg_tpch_orders
+    columns:
+      - name: status_code
+        description: test extended_price
+        tests:
+          - not_null
+          - unique
+          - accepted_values:
+              values: ['P','O','F']
+          - relationships:
+              field: o_orderstatus
+              to: source('tpch', 'orders')

@@ -15,17 +15,17 @@
 {{z}}
 
 {% set payment_methods=['bank','gift','credit']%}
+{{payment_methods[0]}}
+-- {% set le=payment_methods|length%}
 
-{% set le=payment_methods|length%}
-
-select 
-    order_id,
-    {% for i in range(le)%}
-    sum(case when payment_method='{{payment_methods[i]}}' then amount end) as {{payment_methods[i]}}_amount,
-    {% endfor %}
-    sum(amount) as total
-from {{source('second','ORDER_TEST')}}
-group by 1
+-- select 
+--     order_id,
+--     {% for i in range(le)%}
+--     sum(case when payment_method='{{payment_methods[i]}}' then amount end) as {{payment_methods[i]}}_amount,
+--     {% endfor %}
+--     sum(amount) as total
+-- from {{source('second','ORDER_TEST')}}
+-- group by 1
 
 -- select
 --     order_id,

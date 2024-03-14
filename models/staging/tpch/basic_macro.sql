@@ -1,2 +1,2 @@
-{{one('ORDER_TEST')}}
+{{we('ORDER_TEST')}}
 
