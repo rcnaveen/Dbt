@@ -1,0 +1,1 @@
+{{generic_macro('tpch','orders','o_orderstatus')}}

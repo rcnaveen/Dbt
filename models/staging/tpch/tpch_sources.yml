@@ -1,0 +1,47 @@
+version: 2
+sources:
+  - name: second
+    description: for testing jinja
+    database: PC_DBT_DB 
+    schema:  DBT_NTHATIPALLI
+    tables:
+      - name: ORDER_TEST
+      - name: users
+  - name: tpch
+    description: source tpch data
+    database: snowflake_sample_data
+    schema: tpch_sf1
+    tables:
+      - name: orders
+        description: main order tracking table
+        
+        columns:
+          - name: o_orderkey
+            description: SF*1,500,000 are sparsely populated
+            tests: 
+              - unique
+              - not_null
+
+      - name: lineitem
+        description: main lineitem table
+        columns:
+          - name: l_orderkey
+            description: Foreign Key to O_ORDERKEY
+            tests:
+              - relationships:
+                  to: source('tpch', 'orders')
+                  field: o_orderkey
+models:
+  - name: stg_tpch_orders
+    description: For testing the model stg_tpch_orders
+    columns:
+      - name: status_code
+        description: test extended_price
+        tests:
+          - not_null
+          - unique
+          - accepted_values:
+              values: ['P','O','F']
+          - relationships:
+              field: o_orderstatus
+              to: source('tpch', 'orders')
