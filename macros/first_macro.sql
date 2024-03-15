@@ -1,6 +1,3 @@
-{% macro we(src)%}
-{{one(src)}}
-{% endmacro %}
 {% macro one(src)%}
 {% set payment_methods=get_methods()%}
 
@@ -18,6 +15,6 @@ group by 1
 
 {% macro get_methods()%}
 {% set payment_methods=['bank','gift','credit']%}
-{{ payment_methods}}
+{{ return(payment_methods)}}
 
 {% endmacro %}
