@@ -5,6 +5,8 @@ config-version: 2
 profile: 'default'
 vars:
   surrogate_key_treat_nulls_as_empty_strings: True
+  id_amt: 1479650
+
 model-paths: ["models"]
 analysis-paths: ["analysis"]
 test-paths: ["tests/"]
