@@ -1,4 +1,6 @@
-
+{{config(
+    pre_hook="{{pre_hook_macro(123456)}}"
+)}}
 with orders as (
     
     select * from {{ ref('stg_tpch_orders') }} 

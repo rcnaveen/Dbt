@@ -18,8 +18,11 @@ target-path: "target"
 clean-targets:         
     - "target"
     - "dbt_modules"
+# on-run-start: "insert into PC_DBT_DB.DBT_NTHATIPALLI.users (id,name) values(900,'svjdsjv') "
+# on-run-end: "insert into PC_DBT_DB.DBT_NTHATIPALLI.users (id) values(1000)  "
 
 models:
+  pre-hook : "insert into PC_DBT_DB.DBT_NTHATIPALLI.users (id) values(9000)"
   snowflake_workshop:
     staging:
       materialized: view
